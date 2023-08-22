@@ -9,21 +9,56 @@
   <script>
     function getComputerChoice() {
       let choice = Math.floor(Math.random() * 10);
+      let result;
         while(choice >= 3) {
           choice = Math.floor(Math.random() * 10);
         } 
         if (choice === 0) {
-          console.log("rock");
+          result = "rock"; // = 0
         } else if (choice === 1){
-          console.log("paper");
+          result = "paper"; // = 1
         } else if (choice === 2) {
-          console.log("scissors");
-        } else {
-          console.log("this should not show");
+          result = "scissors"; // = 2
         }
-      console.log(choice);
+      return result;
     }
-    getComputerChoice();
+    function capitalize(selection) {
+      
+      selection = selection.toLowerCase();
+      const firstLetter = selection.charAt(0);
+      const firstLetterCap = firstLetter.toUpperCase();
+      const remainingLetters = selection.slice(1);
+      const capitalizedWord = firstLetterCap + remainingLetters;
+
+      return capitalizedWord;
+
+    }
+
+    function rockPaperScissors(user, comp) {
+      let endOfGame;
+      let player = capitalize(user);
+      let computer = capitalize(comp);
+
+      if (computer === player) {
+        endOfGame = `Tie! ${computer} is the same as ${player}.`;
+      } else if (computer === "Rock" && player === "Scissors" 
+      || computer === "Paper" && player === "Rock" 
+      || computer === "Scissors" && player === "Paper"){
+          endOfGame = `${computer} beats ${player}. You lose.`;
+      } else if (computer === "Paper" && player === "Scissors"
+      || computer === "Rock" && player === "Paper"
+      || computer === "Scissors" && player === "Rock") {
+          endOfGame = `${player} beats ${computer}. You win.`;
+      }
+
+      return endOfGame;
+  
+    }
+
+    const playerSelection = "rOck";
+    const computerSelection = getComputerChoice();
+    console.log(computerSelection, playerSelection)
+    console.log(rockPaperScissors(playerSelection, computerSelection));
   </script>
 </body>
 </html>
