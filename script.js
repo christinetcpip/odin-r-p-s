@@ -73,10 +73,8 @@ function game() {
     console.log(rockPaperScissors(playerSelection, computerSelection));
     if (score === 1) {
       computerScore++;
-      console.log("computer score goes up");
     } else if (score === 2) {
       playerScore++;
-      console.log("player score goes up");
     }
     console.log(`The score for the computer is ${computerScore}, the score for the player is ${playerScore}.`)
   }
